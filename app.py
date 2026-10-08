@@ -121,7 +121,7 @@ st.markdown(
        ====================================================== */
 
     [data-testid="stSelectbox"] [data-baseweb="select"] {
-        background-color: #d9d9d9 !important;
+        background-color: #ffffff !important;
         border-radius: 6px !important;
     }
 
