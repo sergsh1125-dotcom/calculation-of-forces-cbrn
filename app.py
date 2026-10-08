@@ -22,12 +22,19 @@ st.markdown(
     """
     <style>
 
-    /* Основной фон */
+    /* ======================================================
+       ОСНОВНОЙ ФОН
+       ====================================================== */
+
     .stApp {
         background-color: #0e1117;
     }
 
-    /* Убираем верхнюю панель Streamlit */
+
+    /* ======================================================
+       УБИРАЕМ СЛУЖЕБНЫЕ ЭЛЕМЕНТЫ STREAMLIT
+       ====================================================== */
+
     #MainMenu {
         visibility: hidden;
     }
@@ -40,25 +47,44 @@ st.markdown(
         visibility: hidden;
     }
 
-    /* Основной заголовок */
+
+    /* ======================================================
+       ЗАГОЛОВКИ
+       ====================================================== */
+
     h1 {
-        color: #ffffff !important;
+        color: #ffcc00 !important;
         font-weight: 800 !important;
         text-align: center;
     }
 
-    /* Заголовки разделов */
     h2 {
         color: #ffcc00 !important;
         font-weight: 800 !important;
     }
 
     h3 {
-        color: #ffffff !important;
-        font-weight: 700 !important;
+        color: #ffcc00 !important;
+        font-weight: 800 !important;
     }
 
-    /* Все подписи элементов */
+
+    /* ======================================================
+       ВЕСЬ ОБЫЧНЫЙ ТЕКСТ — БЕЛЫЙ
+       ====================================================== */
+
+    p {
+        color: #ffffff !important;
+    }
+
+    span {
+        color: #ffffff !important;
+    }
+
+    div {
+        color: #ffffff;
+    }
+
     label {
         color: #ffffff !important;
         font-weight: 600 !important;
@@ -75,17 +101,39 @@ st.markdown(
         opacity: 1 !important;
     }
 
-    /* Текст */
-    p, span, div {
-        opacity: 1;
-    }
 
-    /* Поля ввода */
-    input {
+    /* ======================================================
+       NUMBER INPUT
+       ====================================================== */
+
+    [data-testid="stNumberInput"] label {
         color: #ffffff !important;
     }
 
-    /* Selectbox */
+    [data-testid="stNumberInput"] input {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        opacity: 1 !important;
+    }
+
+    [data-testid="stNumberInput"] input::placeholder {
+        color: #ffffff !important;
+        opacity: 0.7 !important;
+    }
+
+
+    /* ======================================================
+       SELECTBOX
+       ====================================================== */
+
+    [data-testid="stSelectbox"] label {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stSelectbox"] div {
+        color: #ffffff !important;
+    }
+
     [data-baseweb="select"] {
         color: #ffffff !important;
     }
@@ -94,7 +142,15 @@ st.markdown(
         color: #ffffff !important;
     }
 
-    /* Радиокнопки */
+    [data-baseweb="select"] span {
+        color: #ffffff !important;
+    }
+
+
+    /* ======================================================
+       RADIO
+       ====================================================== */
+
     [data-testid="stRadio"] label {
         color: #ffffff !important;
     }
@@ -103,12 +159,40 @@ st.markdown(
         color: #ffffff !important;
     }
 
-    /* Разделитель */
-    hr {
-        border-color: #333333;
+    [data-testid="stRadio"] p {
+        color: #ffffff !important;
     }
 
-    /* Карточка результата */
+
+    /* ======================================================
+       METRIC
+       ====================================================== */
+
+    [data-testid="stMetricLabel"] {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stMetricLabel"] * {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stMetricValue"] {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stMetricValue"] * {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stMetricDelta"] {
+        color: #ffffff !important;
+    }
+
+
+    /* ======================================================
+       РЕЗУЛЬТАТЫ
+       ====================================================== */
+
     .result-box {
         background-color: #161b22;
         border: 1px solid #333333;
@@ -119,55 +203,92 @@ st.markdown(
     }
 
     .result-title {
-        color: #ffcc00;
+        color: #ffcc00 !important;
         font-size: 20px;
         font-weight: 800;
         margin-bottom: 10px;
     }
 
     .result-text {
-        color: #ffffff;
+        color: #ffffff !important;
         font-size: 16px;
         line-height: 1.6;
     }
 
-    /* Большое число результата */
     .result-number {
-        color: #ffcc00;
+        color: #ffcc00 !important;
         font-size: 28px;
         font-weight: 900;
         margin-top: 10px;
     }
 
-    /* Мобильная версия */
+
+    /* ======================================================
+       CAPTION
+       ====================================================== */
+
+    [data-testid="stCaptionContainer"] {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stCaptionContainer"] * {
+        color: #ffffff !important;
+    }
+
+
+    /* ======================================================
+       МОБИЛЬНАЯ ВЕРСИЯ
+       ====================================================== */
+
     @media (max-width: 768px) {
 
         h1 {
-            font-size: 28px !important;
+            font-size: 27px !important;
+            color: #ffcc00 !important;
         }
 
         h2 {
             font-size: 22px !important;
+            color: #ffcc00 !important;
         }
 
         h3 {
             font-size: 19px !important;
+            color: #ffcc00 !important;
+        }
+
+        p {
+            color: #ffffff !important;
+        }
+
+        span {
+            color: #ffffff !important;
         }
 
         label {
+            color: #ffffff !important;
             font-size: 16px !important;
         }
 
-        .result-title {
-            font-size: 18px;
+        input {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
         }
 
-        .result-text {
-            font-size: 15px;
+        [data-testid="stMetricLabel"] {
+            color: #ffffff !important;
         }
 
-        .result-number {
-            font-size: 24px;
+        [data-testid="stMetricValue"] {
+            color: #ffffff !important;
+        }
+
+        [data-testid="stRadio"] label {
+            color: #ffffff !important;
+        }
+
+        [data-baseweb="select"] * {
+            color: #ffffff !important;
         }
 
     }
@@ -211,7 +332,7 @@ st.markdown("---")
 
 
 # ============================================================
-# 1. ВОЗМОЖНОСТИ ОДНОГО ОТДЕЛЕНИЯ
+# 1. МОЖЛИВОСТІ ОДНОГО ВІДДІЛЕННЯ
 # ============================================================
 
 st.header("1. МОЖЛИВОСТІ ОДНОГО ВІДДІЛЕННЯ")
@@ -236,7 +357,7 @@ with col1:
 
 with col2:
     recon_area = st.number_input(
-        "Розвідка району, км/год",
+        "Розвідка району, км.кв./год",
         min_value=0.0,
         value=5.0,
         step=1.0,
@@ -245,7 +366,7 @@ with col2:
 
 
 # ------------------------------------------------------------
-# САНИТАРНАЯ ОБРАБОТКА
+# САНІТАРНА ОБРОБКА
 # ------------------------------------------------------------
 
 st.subheader("Санітарна обробка")
@@ -260,7 +381,7 @@ sanitary_productivity = st.number_input(
 
 
 # ------------------------------------------------------------
-# СПЕЦИАЛЬНАЯ ОБРАБОТКА
+# СПЕЦІАЛЬНА ОБРОБКА
 # ------------------------------------------------------------
 
 st.subheader("Спеціальна обробка")
@@ -295,14 +416,14 @@ st.markdown("---")
 
 
 # ============================================================
-# 2. ВХОДНЫЕ ДАННЫЕ
+# 2. ВХІДНІ ДАНІ ДЛЯ РОЗРАХУНКУ
 # ============================================================
 
 st.header("2. ВХІДНІ ДАНІ ДЛЯ РОЗРАХУНКУ")
 
 
 # ============================================================
-# РХ РОЗВЕДКА
+# РХ РОЗВІДКА
 # ============================================================
 
 st.subheader("РХ розвідка")
@@ -316,8 +437,14 @@ recon_type = st.selectbox(
     key="recon_type",
 )
 
+recon_volume_unit = (
+    "км"
+    if recon_type == "Розвідка маршруту"
+    else "км.кв."
+)
+
 recon_volume = st.number_input(
-    "Обсяг завдання, км",
+    f"Обсяг завдання, {recon_volume_unit}",
     min_value=0.0,
     value=10.0,
     step=1.0,
@@ -334,7 +461,7 @@ recon_time = st.number_input(
 
 
 # ============================================================
-# САНИТАРНАЯ ОБРАБОТКА
+# САНІТАРНА ОБРОБКА
 # ============================================================
 
 st.subheader("Санітарна обробка")
@@ -357,7 +484,7 @@ sanitary_time = st.number_input(
 
 
 # ============================================================
-# СПЕЦИАЛЬНАЯ ОБРАБОТКА
+# СПЕЦІАЛЬНА ОБРОБКА
 # ============================================================
 
 st.subheader("Спеціальна обробка")
@@ -391,25 +518,29 @@ special_time = st.number_input(
 
 
 # ============================================================
-# ОПРЕДЕЛЕНИЕ ПРОИЗВОДИТЕЛЬНОСТИ
+# ВИБОР ПРОДУКТИВНОСТІ СПЕЦІАЛЬНОЇ ОБРОБКИ
 # ============================================================
 
 if special_type == "Дезактивація":
     selected_special_productivity = special_deactivation_productivity
 else:
-    # Дегазація и дезінфекція используют одну возможность
     selected_special_productivity = special_degas_productivity
 
 
 # ============================================================
-# РАСЧЁТ
+# РОЗРАХУНОК
 # ============================================================
 
-# РХ разведка
+# РХ розвідка
 if recon_type == "Розвідка маршруту":
     recon_productivity = recon_route
+    recon_volume_unit = "км"
+    recon_productivity_unit = "км/год"
 else:
     recon_productivity = recon_area
+    recon_volume_unit = "км.кв."
+    recon_productivity_unit = "км.кв./год"
+
 
 recon_units = calculate_units(
     recon_volume,
@@ -418,7 +549,7 @@ recon_units = calculate_units(
 )
 
 
-# Санитарная обработка
+# Санітарна обробка
 sanitary_units = calculate_units(
     sanitary_people,
     sanitary_productivity,
@@ -426,7 +557,7 @@ sanitary_units = calculate_units(
 )
 
 
-# Специальная обработка
+# Спеціальна обробка
 special_units = calculate_units(
     special_volume,
     selected_special_productivity,
@@ -435,7 +566,7 @@ special_units = calculate_units(
 
 
 # ============================================================
-# 3. РЕЗУЛЬТАТИ
+# 3. РЕЗУЛЬТАТИ РОЗРАХУНКУ
 # ============================================================
 
 st.markdown("---")
@@ -444,7 +575,7 @@ st.header("3. РЕЗУЛЬТАТИ РОЗРАХУНКУ")
 
 
 # ============================================================
-# РХ РАЗВЕДКА — РЕЗУЛЬТАТ
+# РХ РОЗВІДКА
 # ============================================================
 
 st.subheader("РХ розвідка")
@@ -459,20 +590,21 @@ if recon_units is None:
 else:
 
     st.write(
-        f"**Вид розвідки:** {recon_type}"
+        f"Вид розвідки: {recon_type}"
     )
 
     st.write(
-        f"**Обсяг завдання:** {recon_volume:.1f} км"
+        f"Обсяг завдання: "
+        f"{recon_volume:.1f} {recon_volume_unit}"
     )
 
     st.write(
-        f"**Час виконання:** {recon_time:.1f} год"
+        f"Час виконання: {recon_time:.1f} год"
     )
 
     st.write(
-        f"**Можливість одного відділення:** "
-        f"{recon_productivity:.1f} км/год"
+        f"Можливість одного відділення: "
+        f"{recon_productivity:.1f} {recon_productivity_unit}"
     )
 
     st.metric(
@@ -482,7 +614,7 @@ else:
 
 
 # ============================================================
-# САНИТАРНАЯ ОБРАБОТКА — РЕЗУЛЬТАТ
+# САНІТАРНА ОБРОБКА
 # ============================================================
 
 st.subheader("Санітарна обробка")
@@ -497,15 +629,15 @@ if sanitary_units is None:
 else:
 
     st.write(
-        f"**Кількість людей:** {sanitary_people} осіб"
+        f"Кількість людей: {sanitary_people} осіб"
     )
 
     st.write(
-        f"**Час виконання:** {sanitary_time:.1f} год"
+        f"Час виконання: {sanitary_time:.1f} год"
     )
 
     st.write(
-        f"**Можливість одного відділення:** "
+        f"Можливість одного відділення: "
         f"{sanitary_productivity:.1f} осіб/год"
     )
 
@@ -516,7 +648,7 @@ else:
 
 
 # ============================================================
-# СПЕЦИАЛЬНАЯ ОБРАБОТКА — РЕЗУЛЬТАТ
+# СПЕЦІАЛЬНА ОБРОБКА
 # ============================================================
 
 st.subheader("Спеціальна обробка")
@@ -531,19 +663,19 @@ if special_units is None:
 else:
 
     st.write(
-        f"**Вид спеціальної обробки:** {special_type}"
+        f"Вид спеціальної обробки: {special_type}"
     )
 
     st.write(
-        f"**Кількість техніки:** {special_volume} од."
+        f"Кількість техніки: {special_volume} од."
     )
 
     st.write(
-        f"**Час виконання:** {special_time:.1f} год"
+        f"Час виконання: {special_time:.1f} год"
     )
 
     st.write(
-        f"**Можливість одного відділення:** "
+        f"Можливість одного відділення: "
         f"{selected_special_productivity:.1f} од./год"
     )
 
@@ -551,51 +683,3 @@ else:
         "Потрібно відділень спеціальної обробки",
         special_units,
     )
-
-
-# ============================================================
-# 4. ПІДСУМОК
-# ============================================================
-
-st.markdown("---")
-
-st.header("4. ПІДСУМОК")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.metric(
-        "Відділення РХ розвідки",
-        recon_units if recon_units is not None else "—",
-    )
-
-with col2:
-    st.metric(
-        "Відділення санітарної обробки",
-        sanitary_units if sanitary_units is not None else "—",
-    )
-
-with col3:
-    st.metric(
-        "Відділення спеціальної обробки",
-        special_units if special_units is not None else "—",
-    )
-
-
-# ============================================================
-# ФОРМУЛА
-# ============================================================
-
-st.markdown("---")
-
-st.subheader("Принцип розрахунку")
-
-st.write(
-    "N = ceil(Обсяг завдання / "
-    "(Можливість одного відділення × Час виконання))"
-)
-
-st.caption(
-    "Результат округлюється у більшу сторону. "
-    "Такий підхід забезпечує консервативне планування сил."
-)
