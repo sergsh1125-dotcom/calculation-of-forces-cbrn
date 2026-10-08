@@ -117,22 +117,22 @@ st.markdown(
 
 
     /* ======================================================
-       SELECTBOX — СЕРЫЙ ФОН
-       ====================================================== */
+   SELECTBOX — БЕЛОЕ ОКНО, ТЁМНЫЙ ТЕКСТ
+   ====================================================== */
 
-    [data-testid="stSelectbox"] [data-baseweb="select"] {
-        background-color: #ffffff !important;
-        border-radius: 6px !important;
-    }
+[data-testid="stSelectbox"] [data-baseweb="select"] {
+    background-color: #ffffff !important;
+    border-radius: 6px !important;
+}
 
-    [data-testid="stSelectbox"] [data-baseweb="select"] * {
-        color: #111111 !important;
-    }
+[data-testid="stSelectbox"] [data-baseweb="select"] * {
+    color: #111111 !important;
+}
 
-    [data-testid="stSelectbox"] input {
-        color: #111111 !important;
-        -webkit-text-fill-color: #111111 !important;
-    }
+[data-testid="stSelectbox"] input {
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+}
 
 
     /* ======================================================
