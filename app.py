@@ -1,3 +1,4 @@
+```python
 import math
 import streamlit as st
 
@@ -26,20 +27,44 @@ st.markdown("""
         background-color: #0e1117;
     }
 
-    /* Заголовки */
-    h1, h2, h3 {
-        color: #ffffff;
+    /* Основний контейнер */
+    .block-container {
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
     }
 
-    /* Жовті заголовки блоків */
+    /* Головний заголовок */
+    h1 {
+        color: #ffffff !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.2px;
+        line-height: 1.2 !important;
+        text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Підзаголовки */
+    h2, h3 {
+        color: #ffffff !important;
+        font-weight: 750 !important;
+        line-height: 1.25 !important;
+        text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Назви розділів */
     .section-title {
         background-color: #ffcc00;
-        color: #000000;
-        padding: 10px 14px;
+        color: #000000 !important;
+        padding: 12px 15px;
         border-radius: 6px;
-        font-weight: 700;
-        margin-top: 12px;
-        margin-bottom: 15px;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 1.3;
+        margin-top: 16px;
+        margin-bottom: 18px;
+        text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
     }
 
     /* Картка результату */
@@ -53,58 +78,89 @@ st.markdown("""
 
     .result-title {
         color: #ffcc00;
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 19px;
+        font-weight: 800;
+        line-height: 1.3;
     }
 
     .result-number {
         color: #ffffff;
         font-size: 30px;
-        font-weight: 700;
-        margin-top: 8px;
+        font-weight: 800;
+        margin-top: 10px;
+        line-height: 1.2;
     }
 
     .result-details {
-        color: #c9d1d9;
-        font-size: 14px;
-        margin-top: 8px;
+        color: #e6edf3;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-top: 9px;
+    }
+
+    /* Текст Streamlit */
+    p, label, .stMarkdown {
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+    }
+
+    /* Поля введення */
+    input, textarea, select {
+        font-size: 16px !important;
     }
 
     /* Кнопка */
     div.stButton > button {
         width: 100%;
-        min-height: 48px;
-        font-weight: 700;
+        min-height: 50px;
+        font-weight: 800;
+        font-size: 16px;
     }
 
-    /* Підписи */
-    label {
-        color: #ffffff !important;
-    }
-
-    /* Мобільна адаптація */
+    /* Мобільна версія */
     @media (max-width: 768px) {
 
         .block-container {
-            padding-left: 0.8rem;
-            padding-right: 0.8rem;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
             padding-top: 1rem;
         }
 
         h1 {
-            font-size: 1.55rem;
+            font-size: 1.65rem !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
         }
 
         h2 {
-            font-size: 1.3rem;
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
         }
 
         h3 {
-            font-size: 1.1rem;
+            font-size: 1.15rem !important;
+            font-weight: 800 !important;
+        }
+
+        .section-title {
+            font-size: 17px;
+            padding: 12px 13px;
+            line-height: 1.35;
+            margin-top: 14px;
+            margin-bottom: 16px;
+        }
+
+        .result-title {
+            font-size: 18px;
         }
 
         .result-number {
-            font-size: 26px;
+            font-size: 27px;
+        }
+
+        .result-details {
+            font-size: 15px;
+            line-height: 1.6;
         }
 
     }
@@ -121,7 +177,7 @@ st.title("Розрахунок сил РХБ захисту")
 
 st.caption(
     "Розрахунок необхідної кількості відділень для виконання завдань "
-    "РХБ розвідки, санітарної та спеціальної обробки."
+    "РХ розвідки, санітарної та спеціальної обробки."
 )
 
 
@@ -140,7 +196,9 @@ st.info(
 )
 
 
-# ---------- РХ РОЗВІДКА ----------
+# ------------------------------------------------------------
+# РХ РОЗВІДКА
+# ------------------------------------------------------------
 
 st.subheader("РХ розвідка")
 
@@ -165,7 +223,9 @@ with col2:
     )
 
 
-# ---------- САНІТАРНА ОБРОБКА ----------
+# ------------------------------------------------------------
+# САНІТАРНА ОБРОБКА
+# ------------------------------------------------------------
 
 st.subheader("Санітарна обробка людей")
 
@@ -178,7 +238,9 @@ san_people = st.number_input(
 )
 
 
-# ---------- СПЕЦІАЛЬНА ОБРОБКА ----------
+# ------------------------------------------------------------
+# СПЕЦІАЛЬНА ОБРОБКА
+# ------------------------------------------------------------
 
 st.subheader("Спеціальна обробка техніки")
 
@@ -240,7 +302,6 @@ rhr_type = st.selectbox(
 col1, col2 = st.columns(2)
 
 with col1:
-
     rhr_volume = st.number_input(
         "Обсяг завдання, км",
         min_value=0.0,
@@ -250,7 +311,6 @@ with col1:
     )
 
 with col2:
-
     rhr_time = st.number_input(
         "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
         min_value=0.1,
@@ -269,7 +329,6 @@ st.subheader("Санітарна обробка людей")
 col1, col2 = st.columns(2)
 
 with col1:
-
     san_volume = st.number_input(
         "Кількість людей, осіб",
         min_value=0,
@@ -279,7 +338,6 @@ with col1:
     )
 
 with col2:
-
     san_time = st.number_input(
         "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
         min_value=0.1,
@@ -290,7 +348,7 @@ with col2:
 
 
 # ============================================================
-# СПЕЦІАЛЬНА ОБРОБКА
+# СПЕЦІАЛЬНА ОБРОБКА ТЕХНІКИ
 # ============================================================
 
 st.subheader("Спеціальна обробка техніки")
@@ -305,37 +363,44 @@ special_type = st.selectbox(
     key="special_type"
 )
 
-vehicle_type = st.selectbox(
-    "Тип техніки",
-    [
-        "Легкові автомобілі",
-        "Вантажні автомобілі",
-        "Автобуси"
-    ],
-    key="vehicle_type"
-)
+st.markdown("**Тип техніки та кількість**")
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
-
-    special_volume = st.number_input(
-        "Кількість техніки, од.",
+    special_light_volume = st.number_input(
+        "Легкові автомобілі",
         min_value=0,
-        value=10,
+        value=0,
         step=1,
-        key="special_volume"
+        key="special_light_volume"
     )
 
 with col2:
-
-    special_time = st.number_input(
-        "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
-        min_value=0.1,
-        value=1.0,
-        step=0.5,
-        key="special_time"
+    special_truck_volume = st.number_input(
+        "Вантажні автомобілі",
+        min_value=0,
+        value=0,
+        step=1,
+        key="special_truck_volume"
     )
+
+with col3:
+    special_bus_volume = st.number_input(
+        "Автобуси",
+        min_value=0,
+        value=0,
+        step=1,
+        key="special_bus_volume"
+    )
+
+special_time = st.number_input(
+    "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
+    min_value=0.1,
+    value=1.0,
+    step=0.5,
+    key="special_time"
+)
 
 
 # ============================================================
@@ -356,14 +421,6 @@ calculate = st.button(
 # ============================================================
 
 def calculate_units(volume, productivity, time):
-    """
-    Розрахунок необхідної кількості відділень.
-
-    volume       - обсяг завдання
-    productivity - можливість одного відділення за годину
-    time         - заданий час виконання
-    """
-
     if volume <= 0:
         return 0
 
@@ -387,28 +444,20 @@ if calculate:
         unsafe_allow_html=True
     )
 
-    results = []
-
-
     # --------------------------------------------------------
     # РХ РОЗВІДКА
     # --------------------------------------------------------
 
     if rhr_type == "Розвідка маршруту":
-
-        productivity = rhr_route
-
+        rhr_productivity = rhr_route
     else:
-
-        productivity = rhr_area
-
+        rhr_productivity = rhr_area
 
     rhr_result = calculate_units(
         rhr_volume,
-        productivity,
+        rhr_productivity,
         rhr_time
     )
-
 
     if rhr_result is None:
 
@@ -419,11 +468,6 @@ if calculate:
 
     else:
 
-        if rhr_type == "Розвідка маршруту":
-            unit_name = "відділення РХР"
-        else:
-            unit_name = "відділення РХР"
-
         st.markdown(
             f"""
             <div class="result-card">
@@ -433,18 +477,16 @@ if calculate:
                     Вид: {rhr_type}<br>
                     Обсяг: {rhr_volume:.1f} км<br>
                     Час виконання: {rhr_time:.1f} год<br>
-                    Можливість 1 відділення: {productivity:.1f} км/год
+                    Можливість одного відділення: {rhr_productivity:.1f} км/год
                 </div>
 
                 <div class="result-number">
-                    {rhr_result} {unit_name}
+                    {rhr_result} відділення РХ розвідки
                 </div>
             </div>
             """,
             unsafe_allow_html=True
         )
-
-        results.append(rhr_result)
 
 
     # --------------------------------------------------------
@@ -456,7 +498,6 @@ if calculate:
         san_people,
         san_time
     )
-
 
     if san_result is None:
 
@@ -477,81 +518,121 @@ if calculate:
                 <div class="result-details">
                     Кількість людей: {san_volume} осіб<br>
                     Час виконання: {san_time:.1f} год<br>
-                    Можливість 1 відділення: {san_people:.1f} осіб/год
+                    Можливість одного відділення: {san_people:.1f} осіб/год
                 </div>
 
                 <div class="result-number">
-                    {san_result} відділення
+                    {san_result} відділення санітарної обробки
                 </div>
             </div>
             """,
             unsafe_allow_html=True
         )
-
-        results.append(san_result)
 
 
     # --------------------------------------------------------
     # СПЕЦІАЛЬНА ОБРОБКА
     # --------------------------------------------------------
 
-    if vehicle_type == "Легкові автомобілі":
+    special_results = []
 
-        productivity = special_light
+    # Легкові автомобілі
+    if special_light_volume > 0:
 
-    elif vehicle_type == "Вантажні автомобілі":
+        result = calculate_units(
+            special_light_volume,
+            special_light,
+            special_time
+        )
 
-        productivity = special_truck
+        if result is None:
+            st.error(
+                "Для легкових автомобілів необхідно вказати "
+                "можливість більше 0 од./год."
+            )
+        else:
+            special_results.append(
+                ("Легкові автомобілі", special_light_volume, special_light, result)
+            )
+
+
+    # Вантажні автомобілі
+    if special_truck_volume > 0:
+
+        result = calculate_units(
+            special_truck_volume,
+            special_truck,
+            special_time
+        )
+
+        if result is None:
+            st.error(
+                "Для вантажних автомобілів необхідно вказати "
+                "можливість більше 0 од./год."
+            )
+        else:
+            special_results.append(
+                ("Вантажні автомобілі", special_truck_volume, special_truck, result)
+            )
+
+
+    # Автобуси
+    if special_bus_volume > 0:
+
+        result = calculate_units(
+            special_bus_volume,
+            special_bus,
+            special_time
+        )
+
+        if result is None:
+            st.error(
+                "Для автобусів необхідно вказати "
+                "можливість більше 0 од./год."
+            )
+        else:
+            special_results.append(
+                ("Автобуси", special_bus_volume, special_bus, result)
+            )
+
+
+    # Виведення результатів спеціальної обробки
+    if special_results:
+
+        for vehicle_name, volume, productivity, result in special_results:
+
+            st.markdown(
+                f"""
+                <div class="result-card">
+                    <div class="result-title">
+                        СПЕЦІАЛЬНА ОБРОБКА ТЕХНІКИ
+                    </div>
+
+                    <div class="result-details">
+                        Вид обробки: {special_type}<br>
+                        Тип техніки: {vehicle_name}<br>
+                        Кількість: {volume} од.<br>
+                        Час виконання: {special_time:.1f} год<br>
+                        Можливість одного відділення: {productivity:.1f} од./год
+                    </div>
+
+                    <div class="result-number">
+                        {result} відділення спеціальної обробки
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
     else:
 
-        productivity = special_bus
-
-
-    special_result = calculate_units(
-        special_volume,
-        productivity,
-        special_time
-    )
-
-
-    if special_result is None:
-
-        st.error(
-            "Для спеціальної обробки необхідно вказати "
-            "можливість одного відділення більше 0 од./год."
+        st.info(
+            "Для спеціальної обробки не задано кількість техніки."
         )
-
-    else:
-
-        st.markdown(
-            f"""
-            <div class="result-card">
-                <div class="result-title">
-                    СПЕЦІАЛЬНА ОБРОБКА ТЕХНІКИ
-                </div>
-
-                <div class="result-details">
-                    Вид обробки: {special_type}<br>
-                    Тип техніки: {vehicle_type}<br>
-                    Кількість: {special_volume} од.<br>
-                    Час виконання: {special_time:.1f} год<br>
-                    Можливість 1 відділення: {productivity:.1f} од./год
-                </div>
-
-                <div class="result-number">
-                    {special_result} відділення
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-        results.append(special_result)
 
 
     # ========================================================
-    # ПІДСУМКОВА ТАБЛИЦЯ
+    # ПІДСУМОК
     # ========================================================
 
     st.subheader("Підсумок")
@@ -559,51 +640,39 @@ if calculate:
     summary_col1, summary_col2, summary_col3 = st.columns(3)
 
     with summary_col1:
-
         st.metric(
-            "Відділення РХР",
+            "Відділення РХ розвідки",
             rhr_result if rhr_result is not None else "-"
         )
 
     with summary_col2:
-
         st.metric(
-            "Санітарна обробка",
+            "Відділення санітарної обробки",
             san_result if san_result is not None else "-"
         )
 
     with summary_col3:
 
+        # Якщо обробляється декілька типів техніки,
+        # визначаємо максимальну потребу в відділеннях.
+        #
+        # Важливо: один підрозділ спеціальної обробки
+        # може послідовно працювати з різними типами техніки.
+        # Тому тут показуємо максимальну одночасну потребу,
+        # а не механічну суму.
+
+        if special_results:
+
+            special_total = max(
+                item[3] for item in special_results
+            )
+
+        else:
+
+            special_total = 0
+
         st.metric(
-            "Спеціальна обробка",
-            special_result if special_result is not None else "-"
+            "Відділення спеціальної обробки",
+            special_total
         )
-
-
-    # Загальна кількість
-    if results:
-
-        total = sum(results)
-
-        st.markdown("---")
-
-        st.markdown(
-            f"""
-            <div class="result-card">
-                <div class="result-title">
-                    ЗАГАЛЬНА КІЛЬКІСТЬ ВІДДІЛЕНЬ
-                </div>
-
-                <div class="result-number">
-                    {total}
-                </div>
-
-                <div class="result-details">
-                    РХР: {rhr_result if rhr_result is not None else 0}<br>
-                    Санітарна обробка: {san_result if san_result is not None else 0}<br>
-                    Спеціальна обробка: {special_result if special_result is not None else 0}
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+```
