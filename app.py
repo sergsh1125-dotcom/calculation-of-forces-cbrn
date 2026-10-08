@@ -3,7 +3,7 @@ import streamlit as st
 
 
 # ============================================================
-# НАЛАШТУВАННЯ СТОРІНКИ
+# НАСТРОЙКИ СТРАНИЦЫ
 # ============================================================
 
 st.set_page_config(
@@ -15,31 +15,19 @@ st.set_page_config(
 
 
 # ============================================================
-# СТИЛІ
+# CSS
 # ============================================================
 
-st.markdown("""
-<style>
+st.markdown(
+    """
+    <style>
 
-    /* ========================================================
-       ОСНОВНИЙ ІНТЕРФЕЙС
-       ======================================================== */
-
+    /* Основной фон */
     .stApp {
         background-color: #0e1117;
     }
 
-    .block-container {
-        padding-top: 1.5rem;
-        padding-bottom: 2rem;
-    }
-
-
-    /* ========================================================
-       ПРИБРАТИ СЛУЖБОВУ ВЕРХНЮ ПАНЕЛЬ STREAMLIT
-       ПК + СМАРТФОН
-       ======================================================== */
-
+    /* Убираем верхнюю панель Streamlit */
     #MainMenu {
         visibility: hidden;
     }
@@ -52,61 +40,26 @@ st.markdown("""
         visibility: hidden;
     }
 
-
-    /* ========================================================
-       ЗАГОЛОВКИ
-       ======================================================== */
-
+    /* Основной заголовок */
     h1 {
         color: #ffffff !important;
         font-weight: 800 !important;
-        letter-spacing: 0.2px;
-        line-height: 1.2 !important;
-        text-rendering: geometricPrecision;
-        -webkit-font-smoothing: antialiased;
+        text-align: center;
     }
 
-    h2,
+    /* Заголовки разделов */
+    h2 {
+        color: #ffcc00 !important;
+        font-weight: 800 !important;
+    }
+
     h3 {
         color: #ffffff !important;
-        font-weight: 800 !important;
-        line-height: 1.25 !important;
-        text-rendering: geometricPrecision;
-        -webkit-font-smoothing: antialiased;
+        font-weight: 700 !important;
     }
 
-
-    /* ========================================================
-       НАЗВИ РОЗДІЛІВ
-       ======================================================== */
-
-    .section-title {
-        background-color: #ffcc00;
-        color: #000000 !important;
-        padding: 12px 15px;
-        border-radius: 6px;
-        font-weight: 800;
-        font-size: 18px;
-        line-height: 1.3;
-        margin-top: 16px;
-        margin-bottom: 18px;
-        text-rendering: geometricPrecision;
-        -webkit-font-smoothing: antialiased;
-    }
-
-
-    /* ========================================================
-       ПІДПИСИ НАД ПОЛЯМИ STREAMLIT
-       БІЛІ — У Т.Ч. НА СМАРТФОНІ
-       ======================================================== */
-
+    /* Все подписи элементов */
     label {
-        color: #ffffff !important;
-        font-weight: 600 !important;
-        opacity: 1 !important;
-    }
-
-    label p {
         color: #ffffff !important;
         font-weight: 600 !important;
         opacity: 1 !important;
@@ -114,6 +67,7 @@ st.markdown("""
 
     [data-testid="stWidgetLabel"] {
         color: #ffffff !important;
+        opacity: 1 !important;
     }
 
     [data-testid="stWidgetLabel"] * {
@@ -121,411 +75,120 @@ st.markdown("""
         opacity: 1 !important;
     }
 
-    [data-testid="stMarkdownContainer"] p {
-        color: #ffffff;
+    /* Текст */
+    p, span, div {
+        opacity: 1;
     }
 
-
-    /* ========================================================
-       ПОЛЯ ВВЕДЕННЯ
-       ======================================================== */
-
-    input,
-    textarea,
-    select {
-        font-size: 16px !important;
-    }
-
-
-    /* ========================================================
-       INFO / ПОВІДОМЛЕННЯ
-       ======================================================== */
-
-    [data-testid="stAlert"] {
+    /* Поля ввода */
+    input {
         color: #ffffff !important;
     }
 
-    [data-testid="stAlert"] p {
+    /* Selectbox */
+    [data-baseweb="select"] {
         color: #ffffff !important;
     }
 
-
-    /* ========================================================
-       КНОПКА
-       ======================================================== */
-
-    div.stButton > button {
-        width: 100%;
-        min-height: 50px;
-        font-weight: 800;
-        font-size: 16px;
+    [data-baseweb="select"] * {
+        color: #ffffff !important;
     }
 
+    /* Радиокнопки */
+    [data-testid="stRadio"] label {
+        color: #ffffff !important;
+    }
 
-    /* ========================================================
-       РЕЗУЛЬТАТИ
-       ======================================================== */
+    [data-testid="stRadio"] label * {
+        color: #ffffff !important;
+    }
 
-    .result-card {
+    /* Разделитель */
+    hr {
+        border-color: #333333;
+    }
+
+    /* Карточка результата */
+    .result-box {
         background-color: #161b22;
-        border: 1px solid #30363d;
-        border-radius: 8px;
-        padding: 16px;
+        border: 1px solid #333333;
+        border-radius: 10px;
+        padding: 18px;
+        margin-top: 12px;
         margin-bottom: 12px;
     }
 
     .result-title {
         color: #ffcc00;
-        font-size: 19px;
+        font-size: 20px;
         font-weight: 800;
-        line-height: 1.3;
+        margin-bottom: 10px;
     }
 
-    .result-number {
+    .result-text {
         color: #ffffff;
-        font-size: 30px;
-        font-weight: 800;
-        margin-top: 10px;
-        line-height: 1.2;
-    }
-
-    .result-details {
-        color: #ffffff;
-        font-size: 15px;
+        font-size: 16px;
         line-height: 1.6;
-        margin-top: 9px;
     }
 
-
-    /* ========================================================
-       METRIC
-       ======================================================== */
-
-    [data-testid="stMetricLabel"] {
-        color: #ffffff !important;
+    /* Большое число результата */
+    .result-number {
+        color: #ffcc00;
+        font-size: 28px;
+        font-weight: 900;
+        margin-top: 10px;
     }
 
-    [data-testid="stMetricValue"] {
-        color: #ffffff !important;
-    }
-
-
-    /* ========================================================
-       МОБІЛЬНА ВЕРСІЯ
-       ======================================================== */
-
+    /* Мобильная версия */
     @media (max-width: 768px) {
 
-        .block-container {
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-            padding-top: 1rem;
-        }
-
         h1 {
-            font-size: 1.65rem !important;
-            font-weight: 800 !important;
-            line-height: 1.2 !important;
+            font-size: 28px !important;
         }
 
         h2 {
-            font-size: 1.35rem !important;
-            font-weight: 800 !important;
+            font-size: 22px !important;
         }
 
         h3 {
-            font-size: 1.15rem !important;
-            font-weight: 800 !important;
+            font-size: 19px !important;
         }
 
-        .section-title {
-            font-size: 17px;
-            padding: 12px 13px;
-            line-height: 1.35;
-            margin-top: 14px;
-            margin-bottom: 16px;
+        label {
+            font-size: 16px !important;
         }
 
         .result-title {
             font-size: 18px;
         }
 
-        .result-number {
-            font-size: 27px;
-        }
-
-        .result-details {
+        .result-text {
             font-size: 15px;
-            line-height: 1.6;
         }
 
-        label,
-        label p,
-        [data-testid="stWidgetLabel"],
-        [data-testid="stWidgetLabel"] * {
-            color: #ffffff !important;
-            opacity: 1 !important;
-            font-weight: 600 !important;
+        .result-number {
+            font-size: 24px;
         }
 
     }
 
-</style>
-""", unsafe_allow_html=True)
-
-
-# ============================================================
-# ЗАГОЛОВОК
-# ============================================================
-
-st.title("Розрахунок сил РХБ захисту")
-
-st.caption(
-    "Розрахунок необхідної кількості відділень для виконання завдань "
-    "РХ розвідки, санітарної та спеціальної обробки."
+    </style>
+    """,
+    unsafe_allow_html=True,
 )
 
 
 # ============================================================
-# БЛОК 1. МОЖЛИВОСТІ ОДНОГО ВІДДІЛЕННЯ
-# ============================================================
-
-st.markdown(
-    '<div class="section-title">1. МОЖЛИВОСТІ ОДНОГО ВІДДІЛЕННЯ</div>',
-    unsafe_allow_html=True
-)
-
-st.info(
-    "Оператор самостійно встановлює продуктивність одного відділення "
-    "залежно від наявної спеціальної техніки та умов виконання завдання."
-)
-
-
-# ============================================================
-# РХ РОЗВІДКА
-# ============================================================
-
-st.subheader("РХ розвідка")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    rhr_route = st.number_input(
-        "Розвідка маршруту, км/год",
-        min_value=0.0,
-        value=10.0,
-        step=1.0,
-        key="rhr_route"
-    )
-
-with col2:
-    rhr_area = st.number_input(
-        "Розвідка району, км/год",
-        min_value=0.0,
-        value=5.0,
-        step=1.0,
-        key="rhr_area"
-    )
-
-
-# ============================================================
-# САНІТАРНА ОБРОБКА
-# ============================================================
-
-st.subheader("Санітарна обробка людей")
-
-san_people = st.number_input(
-    "Санітарна обробка, осіб/год",
-    min_value=0.0,
-    value=50.0,
-    step=5.0,
-    key="san_people"
-)
-
-
-# ============================================================
-# СПЕЦІАЛЬНА ОБРОБКА
-# ============================================================
-
-st.subheader("Спеціальна обробка техніки")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    special_total = st.number_input(
-        "Всього техніки, од./год",
-        min_value=0.0,
-        value=10.0,
-        step=1.0,
-        key="special_total"
-    )
-
-with col2:
-    special_light = st.number_input(
-        "У тому числі — легкові автомобілі, од./год",
-        min_value=0.0,
-        value=10.0,
-        step=1.0,
-        key="special_light"
-    )
-
-with col3:
-    special_heavy = st.number_input(
-        "У тому числі — вантажні автомобілі (автобуси), од./год",
-        min_value=0.0,
-        value=5.0,
-        step=1.0,
-        key="special_heavy"
-    )
-
-
-# ============================================================
-# БЛОК 2. ВХІДНІ ДАНІ
-# ============================================================
-
-st.markdown(
-    '<div class="section-title">2. ВХІДНІ ДАНІ ДЛЯ РОЗРАХУНКУ</div>',
-    unsafe_allow_html=True
-)
-
-
-# ============================================================
-# РХ РОЗВІДКА
-# ============================================================
-
-st.subheader("РХ розвідка")
-
-rhr_type = st.selectbox(
-    "Вид РХ розвідки",
-    [
-        "Розвідка маршруту",
-        "Розвідка району"
-    ],
-    key="rhr_type"
-)
-
-col1, col2 = st.columns(2)
-
-with col1:
-    rhr_volume = st.number_input(
-        "Обсяг завдання, км",
-        min_value=0.0,
-        value=10.0,
-        step=1.0,
-        key="rhr_volume"
-    )
-
-with col2:
-    rhr_time = st.number_input(
-        "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
-        min_value=0.1,
-        value=1.0,
-        step=0.5,
-        key="rhr_time"
-    )
-
-
-# ============================================================
-# САНІТАРНА ОБРОБКА
-# ============================================================
-
-st.subheader("Санітарна обробка людей")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    san_volume = st.number_input(
-        "Кількість людей, осіб",
-        min_value=0,
-        value=100,
-        step=10,
-        key="san_volume"
-    )
-
-with col2:
-    san_time = st.number_input(
-        "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
-        min_value=0.1,
-        value=1.0,
-        step=0.5,
-        key="san_time"
-    )
-
-
-# ============================================================
-# СПЕЦІАЛЬНА ОБРОБКА ТЕХНІКИ
-# ============================================================
-
-st.subheader("Спеціальна обробка техніки")
-
-special_type = st.selectbox(
-    "Вид спеціальної обробки",
-    [
-        "Дегазація",
-        "Дезактивація",
-        "Дезінфекція"
-    ],
-    key="special_type"
-)
-
-st.markdown("**Тип техніки та кількість**")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    special_light_volume = st.number_input(
-        "Легкові автомобілі",
-        min_value=0,
-        value=0,
-        step=1,
-        key="special_light_volume"
-    )
-
-with col2:
-    special_truck_volume = st.number_input(
-        "Вантажні автомобілі",
-        min_value=0,
-        value=0,
-        step=1,
-        key="special_truck_volume"
-    )
-
-with col3:
-    special_bus_volume = st.number_input(
-        "Автобуси",
-        min_value=0,
-        value=0,
-        step=1,
-        key="special_bus_volume"
-    )
-
-special_time = st.number_input(
-    "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
-    min_value=0.1,
-    value=1.0,
-    step=0.5,
-    key="special_time"
-)
-
-
-# ============================================================
-# КНОПКА РОЗРАХУНКУ
-# ============================================================
-
-st.markdown("---")
-
-calculate = st.button(
-    "РОЗРАХУВАТИ КІЛЬКІСТЬ СИЛ",
-    type="primary",
-    use_container_width=True
-)
-
-
-# ============================================================
-# ФУНКЦІЯ РОЗРАХУНКУ
+# ФУНКЦИЯ РАСЧЁТА
 # ============================================================
 
 def calculate_units(volume, productivity, time):
+    """
+    Расчёт необходимого количества отделений.
+
+    N = ceil(volume / (productivity * time))
+    """
+
     if volume <= 0:
         return 0
 
@@ -539,270 +202,400 @@ def calculate_units(volume, productivity, time):
 
 
 # ============================================================
-# БЛОК 3. РЕЗУЛЬТАТИ
+# ЗАГОЛОВОК
 # ============================================================
 
-if calculate:
+st.title("РОЗРАХУНОК СИЛ РХБ ЗАХИСТУ")
 
-    st.markdown(
-        '<div class="section-title">3. РЕЗУЛЬТАТИ РОЗРАХУНКУ</div>',
-        unsafe_allow_html=True
+st.markdown("---")
+
+
+# ============================================================
+# 1. ВОЗМОЖНОСТИ ОДНОГО ОТДЕЛЕНИЯ
+# ============================================================
+
+st.header("1. МОЖЛИВОСТІ ОДНОГО ВІДДІЛЕННЯ")
+
+
+# ------------------------------------------------------------
+# РХ РОЗВІДКА
+# ------------------------------------------------------------
+
+st.subheader("РХ розвідка")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    recon_route = st.number_input(
+        "Розвідка маршруту, км/год",
+        min_value=0.0,
+        value=10.0,
+        step=1.0,
+        key="recon_route",
     )
 
-    # ========================================================
-    # РХ РОЗВІДКА
-    # ========================================================
-
-    if rhr_type == "Розвідка маршруту":
-        rhr_productivity = rhr_route
-    else:
-        rhr_productivity = rhr_area
-
-    rhr_result = calculate_units(
-        rhr_volume,
-        rhr_productivity,
-        rhr_time
+with col2:
+    recon_area = st.number_input(
+        "Розвідка району, км/год",
+        min_value=0.0,
+        value=5.0,
+        step=1.0,
+        key="recon_area",
     )
 
-    if rhr_result is None:
 
-        st.error(
-            "Для РХ розвідки необхідно вказати можливість "
-            "одного відділення більше 0 км/год."
-        )
+# ------------------------------------------------------------
+# САНИТАРНАЯ ОБРАБОТКА
+# ------------------------------------------------------------
 
-    else:
+st.subheader("Санітарна обробка")
 
-        st.markdown(
-            f"""
-            <div class="result-card">
-                <div class="result-title">РХ РОЗВІДКА</div>
-                <div class="result-details">
-                    Вид: {rhr_type}<br>
-                    Обсяг: {rhr_volume:.1f} км<br>
-                    Час виконання: {rhr_time:.1f} год<br>
-                    Можливість одного відділення: {rhr_productivity:.1f} км/год
-                </div>
-                <div class="result-number">
-                    {rhr_result} відділення РХ розвідки
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+sanitary_productivity = st.number_input(
+    "Санітарна обробка, осіб/год",
+    min_value=0.0,
+    value=100.0,
+    step=10.0,
+    key="sanitary_productivity",
+)
 
 
-    # ========================================================
-    # САНІТАРНА ОБРОБКА
-    # ========================================================
+# ------------------------------------------------------------
+# СПЕЦИАЛЬНАЯ ОБРАБОТКА
+# ------------------------------------------------------------
 
-    san_result = calculate_units(
-        san_volume,
-        san_people,
-        san_time
+st.subheader("Спеціальна обробка")
+
+st.caption(
+    "Вказується фактична можливість одного відділення. "
+    "Категорії транспортних засобів не поділяються."
+)
+
+col1, col2 = st.columns(2)
+
+with col1:
+    special_degas_productivity = st.number_input(
+        "Дегазація (дезінфекція), од./год",
+        min_value=0.0,
+        value=5.0,
+        step=1.0,
+        key="special_degas_productivity",
     )
 
-    if san_result is None:
-
-        st.error(
-            "Для санітарної обробки необхідно вказати "
-            "можливість одного відділення більше 0 осіб/год."
-        )
-
-    else:
-
-        st.markdown(
-            f"""
-            <div class="result-card">
-                <div class="result-title">
-                    САНІТАРНА ОБРОБКА ЛЮДЕЙ
-                </div>
-
-                <div class="result-details">
-                    Кількість людей: {san_volume} осіб<br>
-                    Час виконання: {san_time:.1f} год<br>
-                    Можливість одного відділення: {san_people:.1f} осіб/год
-                </div>
-
-                <div class="result-number">
-                    {san_result} відділення санітарної обробки
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+with col2:
+    special_deactivation_productivity = st.number_input(
+        "Дезактивація, од./год",
+        min_value=0.0,
+        value=3.0,
+        step=1.0,
+        key="special_deactivation_productivity",
+    )
 
 
-    # ========================================================
-    # СПЕЦІАЛЬНА ОБРОБКА
-    # ========================================================
-
-    special_results = []
+st.markdown("---")
 
 
-    # --------------------------------------------------------
-    # ЛЕГКОВІ АВТОМОБІЛІ
-    # --------------------------------------------------------
+# ============================================================
+# 2. ВХОДНЫЕ ДАННЫЕ
+# ============================================================
 
-    if special_light_volume > 0:
-
-        result = calculate_units(
-            special_light_volume,
-            special_light,
-            special_time
-        )
-
-        if result is None:
-
-            st.error(
-                "Для легкових автомобілів необхідно вказати "
-                "можливість більше 0 од./год."
-            )
-
-        else:
-
-            special_results.append(
-                (
-                    "Легкові автомобілі",
-                    special_light_volume,
-                    special_light,
-                    result
-                )
-            )
+st.header("2. ВХІДНІ ДАНІ ДЛЯ РОЗРАХУНКУ")
 
 
-    # --------------------------------------------------------
-    # ВАНТАЖНІ АВТОМОБІЛІ
-    # --------------------------------------------------------
+# ============================================================
+# РХ РОЗВЕДКА
+# ============================================================
 
-    if special_truck_volume > 0:
+st.subheader("РХ розвідка")
 
-        result = calculate_units(
-            special_truck_volume,
-            special_heavy,
-            special_time
-        )
+recon_type = st.selectbox(
+    "Вид РХ розвідки",
+    [
+        "Розвідка маршруту",
+        "Розвідка району",
+    ],
+    key="recon_type",
+)
 
-        if result is None:
+recon_volume = st.number_input(
+    "Обсяг завдання, км",
+    min_value=0.0,
+    value=10.0,
+    step=1.0,
+    key="recon_volume",
+)
 
-            st.error(
-                "Для вантажних автомобілів необхідно вказати "
-                "можливість більше 0 од./год."
-            )
-
-        else:
-
-            special_results.append(
-                (
-                    "Вантажні автомобілі",
-                    special_truck_volume,
-                    special_heavy,
-                    result
-                )
-            )
-
-
-    # --------------------------------------------------------
-    # АВТОБУСИ
-    # --------------------------------------------------------
-
-    if special_bus_volume > 0:
-
-        result = calculate_units(
-            special_bus_volume,
-            special_heavy,
-            special_time
-        )
-
-        if result is None:
-
-            st.error(
-                "Для автобусів необхідно вказати "
-                "можливість більше 0 од./год."
-            )
-
-        else:
-
-            special_results.append(
-                (
-                    "Автобуси",
-                    special_bus_volume,
-                    special_heavy,
-                    result
-                )
-            )
+recon_time = st.number_input(
+    "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
+    min_value=0.1,
+    value=1.0,
+    step=0.5,
+    key="recon_time",
+)
 
 
-    # ========================================================
-    # ВИВЕДЕННЯ РЕЗУЛЬТАТІВ СПЕЦІАЛЬНОЇ ОБРОБКИ
-    # ========================================================
+# ============================================================
+# САНИТАРНАЯ ОБРАБОТКА
+# ============================================================
 
-    if special_results:
+st.subheader("Санітарна обробка")
 
-        for vehicle_name, volume, productivity, result in special_results:
+sanitary_people = st.number_input(
+    "Кількість людей, осіб",
+    min_value=0,
+    value=100,
+    step=10,
+    key="sanitary_people",
+)
 
-            st.markdown(
-                f"""
-                <div class="result-card">
-                    <div class="result-title">
-                        СПЕЦІАЛЬНА ОБРОБКА ТЕХНІКИ
-                    </div>
-
-                    <div class="result-details">
-                        Вид обробки: {special_type}<br>
-                        Тип техніки: {vehicle_name}<br>
-                        Кількість: {volume} од.<br>
-                        Час виконання: {special_time:.1f} год<br>
-                        Можливість одного відділення: {productivity:.1f} од./год
-                    </div>
-
-                    <div class="result-number">
-                        {result} відділення спеціальної обробки
-                    </div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-    else:
-
-        st.info(
-            "Для спеціальної обробки не задано кількість техніки."
-        )
+sanitary_time = st.number_input(
+    "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
+    min_value=0.1,
+    value=1.0,
+    step=0.5,
+    key="sanitary_time",
+)
 
 
-    # ========================================================
-    # ПІДСУМОК
-    # ========================================================
+# ============================================================
+# СПЕЦИАЛЬНАЯ ОБРАБОТКА
+# ============================================================
 
-    st.subheader("Підсумок")
+st.subheader("Спеціальна обробка")
 
-    summary_col1, summary_col2, summary_col3 = st.columns(3)
+special_type = st.radio(
+    "Вид спеціальної обробки",
+    [
+        "Дегазація",
+        "Дезактивація",
+        "Дезінфекція",
+    ],
+    horizontal=True,
+    key="special_type",
+)
 
-    with summary_col1:
+special_volume = st.number_input(
+    "Кількість техніки, од.",
+    min_value=0,
+    value=20,
+    step=1,
+    key="special_volume",
+)
 
-        st.metric(
-            "Відділення РХ розвідки",
-            rhr_result if rhr_result is not None else "-"
-        )
+special_time = st.number_input(
+    "ЧАС НА ВИКОНАННЯ ЗАВДАННЯ, год",
+    min_value=0.1,
+    value=1.0,
+    step=0.5,
+    key="special_time",
+)
 
-    with summary_col2:
 
-        st.metric(
-            "Відділення санітарної обробки",
-            san_result if san_result is not None else "-"
-        )
+# ============================================================
+# ОПРЕДЕЛЕНИЕ ПРОИЗВОДИТЕЛЬНОСТИ
+# ============================================================
 
-    with summary_col3:
+if special_type == "Дезактивація":
+    selected_special_productivity = special_deactivation_productivity
+else:
+    # Дегазація и дезінфекція используют одну возможность
+    selected_special_productivity = special_degas_productivity
 
-        if special_results:
-            special_total = max(
-                item[3] for item in special_results
-            )
-        else:
-            special_total = 0
 
-        st.metric(
-            "Відділення спеціальної обробки",
-            special_total
-        )
+# ============================================================
+# РАСЧЁТ
+# ============================================================
+
+# РХ разведка
+if recon_type == "Розвідка маршруту":
+    recon_productivity = recon_route
+else:
+    recon_productivity = recon_area
+
+recon_units = calculate_units(
+    recon_volume,
+    recon_productivity,
+    recon_time,
+)
+
+
+# Санитарная обработка
+sanitary_units = calculate_units(
+    sanitary_people,
+    sanitary_productivity,
+    sanitary_time,
+)
+
+
+# Специальная обработка
+special_units = calculate_units(
+    special_volume,
+    selected_special_productivity,
+    special_time,
+)
+
+
+# ============================================================
+# 3. РЕЗУЛЬТАТИ
+# ============================================================
+
+st.markdown("---")
+
+st.header("3. РЕЗУЛЬТАТИ РОЗРАХУНКУ")
+
+
+# ============================================================
+# РХ РАЗВЕДКА — РЕЗУЛЬТАТ
+# ============================================================
+
+st.subheader("РХ розвідка")
+
+if recon_units is None:
+
+    st.error(
+        "Неможливо виконати розрахунок: "
+        "можливість одного відділення повинна бути більше 0."
+    )
+
+else:
+
+    st.write(
+        f"**Вид розвідки:** {recon_type}"
+    )
+
+    st.write(
+        f"**Обсяг завдання:** {recon_volume:.1f} км"
+    )
+
+    st.write(
+        f"**Час виконання:** {recon_time:.1f} год"
+    )
+
+    st.write(
+        f"**Можливість одного відділення:** "
+        f"{recon_productivity:.1f} км/год"
+    )
+
+    st.metric(
+        "Потрібно відділень РХ розвідки",
+        recon_units,
+    )
+
+
+# ============================================================
+# САНИТАРНАЯ ОБРАБОТКА — РЕЗУЛЬТАТ
+# ============================================================
+
+st.subheader("Санітарна обробка")
+
+if sanitary_units is None:
+
+    st.error(
+        "Неможливо виконати розрахунок: "
+        "можливість одного відділення повинна бути більше 0."
+    )
+
+else:
+
+    st.write(
+        f"**Кількість людей:** {sanitary_people} осіб"
+    )
+
+    st.write(
+        f"**Час виконання:** {sanitary_time:.1f} год"
+    )
+
+    st.write(
+        f"**Можливість одного відділення:** "
+        f"{sanitary_productivity:.1f} осіб/год"
+    )
+
+    st.metric(
+        "Потрібно відділень санітарної обробки",
+        sanitary_units,
+    )
+
+
+# ============================================================
+# СПЕЦИАЛЬНАЯ ОБРАБОТКА — РЕЗУЛЬТАТ
+# ============================================================
+
+st.subheader("Спеціальна обробка")
+
+if special_units is None:
+
+    st.error(
+        "Неможливо виконати розрахунок: "
+        "можливість одного відділення повинна бути більше 0."
+    )
+
+else:
+
+    st.write(
+        f"**Вид спеціальної обробки:** {special_type}"
+    )
+
+    st.write(
+        f"**Кількість техніки:** {special_volume} од."
+    )
+
+    st.write(
+        f"**Час виконання:** {special_time:.1f} год"
+    )
+
+    st.write(
+        f"**Можливість одного відділення:** "
+        f"{selected_special_productivity:.1f} од./год"
+    )
+
+    st.metric(
+        "Потрібно відділень спеціальної обробки",
+        special_units,
+    )
+
+
+# ============================================================
+# 4. ПІДСУМОК
+# ============================================================
+
+st.markdown("---")
+
+st.header("4. ПІДСУМОК")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric(
+        "Відділення РХ розвідки",
+        recon_units if recon_units is not None else "—",
+    )
+
+with col2:
+    st.metric(
+        "Відділення санітарної обробки",
+        sanitary_units if sanitary_units is not None else "—",
+    )
+
+with col3:
+    st.metric(
+        "Відділення спеціальної обробки",
+        special_units if special_units is not None else "—",
+    )
+
+
+# ============================================================
+# ФОРМУЛА
+# ============================================================
+
+st.markdown("---")
+
+st.subheader("Принцип розрахунку")
+
+st.write(
+    "N = ceil(Обсяг завдання / "
+    "(Можливість одного відділення × Час виконання))"
+)
+
+st.caption(
+    "Результат округлюється у більшу сторону. "
+    "Такий підхід забезпечує консервативне планування сил."
+)
