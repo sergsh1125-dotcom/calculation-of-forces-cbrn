@@ -32,7 +32,7 @@ st.markdown(
 
 
     /* ======================================================
-       УБИРАЕМ СЛУЖЕБНЫЕ ЭЛЕМЕНТЫ STREAMLIT
+       СЛУЖЕБНЫЕ ЭЛЕМЕНТЫ STREAMLIT
        ====================================================== */
 
     #MainMenu {
@@ -49,7 +49,7 @@ st.markdown(
 
 
     /* ======================================================
-       ЗАГОЛОВКИ
+       НАЗВАНИЕ СКРИПТА И ЗАГОЛОВКИ — ЖЁЛТЫЕ
        ====================================================== */
 
     h1 {
@@ -70,19 +70,11 @@ st.markdown(
 
 
     /* ======================================================
-       ВЕСЬ ОБЫЧНЫЙ ТЕКСТ — БЕЛЫЙ
+       ОБЫЧНЫЙ ТЕКСТ — БЕЛЫЙ
        ====================================================== */
 
     p {
         color: #ffffff !important;
-    }
-
-    span {
-        color: #ffffff !important;
-    }
-
-    div {
-        color: #ffffff;
     }
 
     label {
@@ -103,47 +95,60 @@ st.markdown(
 
 
     /* ======================================================
-       NUMBER INPUT
+       ПОЛЯ ВВОДА — СЕРЫЙ ФОН
+       ЦИФРЫ — ТЁМНЫЕ
        ====================================================== */
 
-    [data-testid="stNumberInput"] label {
-        color: #ffffff !important;
-    }
-
     [data-testid="stNumberInput"] input {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+        background-color: #d9d9d9 !important;
+        color: #111111 !important;
+        -webkit-text-fill-color: #111111 !important;
         opacity: 1 !important;
+
+        border: 1px solid #777777 !important;
+        border-radius: 6px !important;
     }
 
-    [data-testid="stNumberInput"] input::placeholder {
-        color: #ffffff !important;
-        opacity: 0.7 !important;
+    [data-testid="stNumberInput"] input:focus {
+        background-color: #eeeeee !important;
+        color: #111111 !important;
+        -webkit-text-fill-color: #111111 !important;
     }
 
 
     /* ======================================================
-       SELECTBOX
+       SELECTBOX — СЕРЫЙ ФОН
        ====================================================== */
 
-    [data-testid="stSelectbox"] label {
-        color: #ffffff !important;
+    [data-testid="stSelectbox"] [data-baseweb="select"] {
+        background-color: #d9d9d9 !important;
+        border-radius: 6px !important;
     }
 
-    [data-testid="stSelectbox"] div {
-        color: #ffffff !important;
+    [data-testid="stSelectbox"] [data-baseweb="select"] * {
+        color: #111111 !important;
     }
 
-    [data-baseweb="select"] {
-        color: #ffffff !important;
+    [data-testid="stSelectbox"] input {
+        color: #111111 !important;
+        -webkit-text-fill-color: #111111 !important;
     }
 
-    [data-baseweb="select"] * {
-        color: #ffffff !important;
+
+    /* ======================================================
+       ВЫПАДАЮЩЕЕ МЕНЮ
+       ====================================================== */
+
+    [data-baseweb="popover"] {
+        background-color: #d9d9d9 !important;
     }
 
-    [data-baseweb="select"] span {
-        color: #ffffff !important;
+    [data-baseweb="menu"] {
+        background-color: #d9d9d9 !important;
+    }
+
+    [data-baseweb="menu"] * {
+        color: #111111 !important;
     }
 
 
@@ -155,17 +160,30 @@ st.markdown(
         color: #ffffff !important;
     }
 
-    [data-testid="stRadio"] label * {
+    [data-testid="stRadio"] label p {
         color: #ffffff !important;
     }
 
-    [data-testid="stRadio"] p {
+    [data-testid="stRadio"] label span {
         color: #ffffff !important;
     }
 
 
     /* ======================================================
-       METRIC
+       ПОДПИСИ ПОЛЕЙ
+       ====================================================== */
+
+    [data-testid="stNumberInput"] label {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stSelectbox"] label {
+        color: #ffffff !important;
+    }
+
+
+    /* ======================================================
+       РЕЗУЛЬТАТЫ
        ====================================================== */
 
     [data-testid="stMetricLabel"] {
@@ -177,61 +195,23 @@ st.markdown(
     }
 
     [data-testid="stMetricValue"] {
-        color: #ffffff !important;
+        color: #ffcc00 !important;
     }
 
     [data-testid="stMetricValue"] * {
-        color: #ffffff !important;
-    }
-
-    [data-testid="stMetricDelta"] {
-        color: #ffffff !important;
+        color: #ffcc00 !important;
     }
 
 
     /* ======================================================
-       РЕЗУЛЬТАТЫ
+       ОШИБКИ
        ====================================================== */
 
-    .result-box {
-        background-color: #161b22;
-        border: 1px solid #333333;
-        border-radius: 10px;
-        padding: 18px;
-        margin-top: 12px;
-        margin-bottom: 12px;
-    }
-
-    .result-title {
-        color: #ffcc00 !important;
-        font-size: 20px;
-        font-weight: 800;
-        margin-bottom: 10px;
-    }
-
-    .result-text {
-        color: #ffffff !important;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
-    .result-number {
-        color: #ffcc00 !important;
-        font-size: 28px;
-        font-weight: 900;
-        margin-top: 10px;
-    }
-
-
-    /* ======================================================
-       CAPTION
-       ====================================================== */
-
-    [data-testid="stCaptionContainer"] {
+    [data-testid="stAlert"] {
         color: #ffffff !important;
     }
 
-    [data-testid="stCaptionContainer"] * {
+    [data-testid="stAlert"] * {
         color: #ffffff !important;
     }
 
@@ -243,52 +223,59 @@ st.markdown(
     @media (max-width: 768px) {
 
         h1 {
-            font-size: 27px !important;
             color: #ffcc00 !important;
+            font-size: 27px !important;
         }
 
         h2 {
-            font-size: 22px !important;
             color: #ffcc00 !important;
+            font-size: 22px !important;
         }
 
         h3 {
-            font-size: 19px !important;
             color: #ffcc00 !important;
+            font-size: 19px !important;
         }
 
         p {
             color: #ffffff !important;
         }
 
-        span {
-            color: #ffffff !important;
-        }
-
         label {
             color: #ffffff !important;
-            font-size: 16px !important;
         }
 
-        input {
+        /* Цифры в полях */
+        [data-testid="stNumberInput"] input {
+            background-color: #d9d9d9 !important;
+            color: #111111 !important;
+            -webkit-text-fill-color: #111111 !important;
+            font-size: 17px !important;
+            font-weight: 600 !important;
+        }
+
+        /* Выбор */
+        [data-testid="stSelectbox"] [data-baseweb="select"] {
+            background-color: #d9d9d9 !important;
+        }
+
+        [data-testid="stSelectbox"] [data-baseweb="select"] * {
+            color: #111111 !important;
+        }
+
+        /* Radio */
+        [data-testid="stRadio"] label {
             color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
         }
 
+        /* Результаты */
         [data-testid="stMetricLabel"] {
             color: #ffffff !important;
         }
 
         [data-testid="stMetricValue"] {
-            color: #ffffff !important;
-        }
-
-        [data-testid="stRadio"] label {
-            color: #ffffff !important;
-        }
-
-        [data-baseweb="select"] * {
-            color: #ffffff !important;
+            color: #ffcc00 !important;
+            font-size: 28px !important;
         }
 
     }
@@ -297,7 +284,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
 
 # ============================================================
 # ФУНКЦИЯ РАСЧЁТА
