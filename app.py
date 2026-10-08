@@ -117,23 +117,29 @@ st.markdown(
 
 
     /* ======================================================
-   SELECTBOX — БЕЛОЕ ОКНО, ТЁМНЫЙ ТЕКСТ
+   SELECTBOX — БЕЛЫЙ ФОН / ЧЁРНЫЙ ТЕКСТ
    ====================================================== */
 
 [data-testid="stSelectbox"] [data-baseweb="select"] {
     background-color: #ffffff !important;
-    border-radius: 6px !important;
 }
 
-[data-testid="stSelectbox"] [data-baseweb="select"] * {
+[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+    background-color: #ffffff !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] > div > div {
+    background-color: #ffffff !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] span {
     color: #111111 !important;
 }
 
-[data-testid="stSelectbox"] input {
+[data-testid="stSelectbox"] [data-baseweb="select"] input {
     color: #111111 !important;
     -webkit-text-fill-color: #111111 !important;
 }
-
 
     /* ======================================================
        ВЫПАДАЮЩЕЕ МЕНЮ
