@@ -1,4 +1,3 @@
-```python
 import math
 import streamlit as st
 
