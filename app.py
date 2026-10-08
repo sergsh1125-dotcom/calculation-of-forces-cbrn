@@ -674,4 +674,4 @@ if calculate:
         st.metric(
             "Відділення спеціальної обробки",
             special_total
-        )
+            )
